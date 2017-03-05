@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body ng-app="myapp" ng-controller="myAppController">
+
+
+<span>省份/直辖市:</span><input type="text" list="proName" ng-model="proNames" class="proNameInput">
+<datalist id="proName">
+    <option value={{proValue}} ng-repeat="proValue in proNameIdArray">{{proValue}}</option>
+</datalist>
+
+<span ng-hide="cityIsHide">城市:</span><input type="text" list="cityName" ng-model="cityNames" class="cityNameInput" ng-hide="cityIsHide">
+<datalist id="cityName">
+    <option value={{cityValue}} ng-repeat="cityValue in cityNameIdArray">{{cityValue}}</option>
+</datalist>
+
+<span>地区</span><input type="text" list="townName" ng-model="townNames" class="townNameInput">
+<datalist id="townName">
+    <option value={{townValue}} ng-repeat="townValue in townNameIdArray">{{townValue}}</option>
+</datalist>
+
+<button><a href="#/">当天实时气温分布</a></button>
+<button><a href="#/weatherInfoShow">未来一周气温分布</a></button>
+
+<div  id="candiv" ng-hide="isHide">
+    <canvas ng-view id="canvas" style="width: 60%"></canvas>
+</div>
+
+<script src="javascripts/angular.js"></script>
+<script src="javascripts/angular-route.js"></script>
+<script src="javascripts/Chart.bundle.js"></script>
+<script src="javascripts/utils.js"></script>
+
+<script src="javascripts/app.js"></script>
+<script src="javascripts/route.js"></script>
+<script src="javascripts/service.js"></script>
+<script src="javascripts/weather.js"></script>
+<script src="javascripts/index-temp.js"></script>
+</body>
+</html>
